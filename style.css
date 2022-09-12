@@ -1,0 +1,30 @@
+.container {
+  display: inline-flex;
+  justify-content: space-between;
+  margin: 20px;
+
+}
+
+.genre {
+  justify-content: flex-start;
+  position: relative;
+  left: 400px;
+}
+
+.cuisine {
+  justify-content: flex-end;
+  position: relative;
+  left: 700px;
+}
+
+
+.button.is-white {
+  position: relative;
+  top: 112px;
+  left: 300px;
+}
+
+.hero-body {
+  text-align: center;
+  
+}
