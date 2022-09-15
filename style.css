@@ -15,6 +15,8 @@
   justify-content: flex-end;
   position: relative;
   left: 700px;
+  padding: 100px;
+  
 }
 
 
@@ -26,5 +28,19 @@
 
 .hero-body {
   text-align: center;
+  border-style: solid; 
+  border-color: black;
+  border-width: 10px;
   
 }
+
+.picture-header {
+background-image: url("DateNight\ \(1\).jpg");
+background-repeat: no-repeat;
+background-size: 10%;
+border-bottom-style: solid; 
+color: red
+
+}
+
+
