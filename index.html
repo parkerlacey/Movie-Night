@@ -28,7 +28,7 @@
 </header>
 
 <main class="container">
-  <div class="genre">
+  <!-- <div class="genre">
     <label class="label">Genre Type</label>
     <div class="control">
       <div class="select">
@@ -43,29 +43,40 @@
         </select>
       </div>
     </div>
-  </div>
-    <div class="cuisine">
-      <label class="label">Cuisine Type</label>
-      <div class="control">
-        <div class="select">
-          <select>
-            <option >Pick One...</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Italian">Italian</option>
-            <option value="American">American</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Greek">Greek</option>
-            <option value="Indian">Indian</option>
-          </select>
-        </div>
-      </div>
+  </div> -->
+  <form id="cuisineSearch">  
+    <label for="cuisineType">Please select a type of cuisine:</label>    
+    <select id="cuisineType">
+        <option value="" disable selected>Select a cuisine type</option>
+        <option value="american">American</option>
+        <option value="asian">Asian</option>
+        <option value="caribbean">Caribbean</option>
+        <option value="chinese">Chinese</option>
+        <option value="french">French</option>
+        <option value="greek">Greek</option>
+        <option value="indian">Indian</option>
+        <option value="italian">Italian</option>
+        <option value="japanese">Japanese</option>
+        <option value="korean">Korean</option>
+        <option value="kosher">Kosher</option>
+        <option value="mexican">Mexican</option>
+        <option value="middle-eastern">Middle Eastern</option>
+        <option value="south-american">South American</option>
+    </select>
+    <button class="btn btn-info btn-block">Search</button>
+  </form>
+  <h2>Recipe Result</h2>
+      <div id="recipeOutput"></div>
+  
+  <!-- <h2>Recipe Result</h2>
+  <div id="recipeOutput"></div>
     </div> 
     <div class="button is-white">
       <button class="button is-danger" type="submit">Generate Suggestion</button>
-    </div>
+    </div> -->
 
 
-<script src="script.js">
+  <script src="script.js"></script>
 
 
 </main>
