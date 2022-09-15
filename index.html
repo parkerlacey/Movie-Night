@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./style.css">
   <title>Netflix & Chill</title>
 </head>
-
+<body>
 <header>
   <section class="hero is-small is-danger">
     <div class="hero-body">
@@ -27,9 +27,10 @@
   </section>
 </header>
 
-<main class="container">
+<main class="container-fluid">
+  <section class="button-wrapper"> 
   <div class="genre">
-    <label class="label">Genre Type</label>
+    <label class="label has-text-danger">Genre Type</label>
     <div class="control">
       <div class="select">
         <select>
@@ -44,30 +45,31 @@
       </div>
     </div>
   </div>
-    <div class="cuisine">
-      <label class="label">Cuisine Type</label>
-      <div class="control">
-        <div class="select">
-          <select>
-            <option >Pick One...</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Italian">Italian</option>
-            <option value="American">American</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Greek">Greek</option>
-            <option value="Indian">Indian</option>
-          </select>
-        </div>
+  <div class="cuisine">
+    <label class="label has-text-danger">Cuisine Type</label>
+    <div class="control">
+      <div class="select">
+        <select>
+          <option>Pick One...</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Italian">Italian</option>
+          <option value="American">American</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Greek">Greek</option>
+          <option value="Indian">Indian</option>
+        </select>
       </div>
-    </div> 
-    <div class="button is-white">
-      <button class="button is-danger" type="submit">Generate Suggestion</button>
     </div>
+  </div>
+</section>
+  <div class="go-button">
+    <button class="button is-danger" type="submit">Generate Suggestion</button>
+  </div>
+</main >
+
+  <script src="script.js"></script>
+</body>
 
 
-<script src="script.js">
-
-
-</main>
 
 </html>

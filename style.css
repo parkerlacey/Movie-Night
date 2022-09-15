@@ -1,30 +1,40 @@
-.container {
-  display: inline-flex;
-  justify-content: space-between;
-  margin: 20px;
-
-}
-
-.genre {
-  justify-content: flex-start;
-  position: relative;
-  left: 400px;
-}
-
-.cuisine {
-  justify-content: flex-end;
-  position: relative;
-  left: 700px;
-}
-
-
-.button.is-white {
-  position: relative;
-  top: 112px;
-  left: 300px;
-}
-
-.hero-body {
-  text-align: center;
+.container-fluid {
+  background-image: url("./background.jpeg");
+    height: 100vh;
+  }
   
-}
+  .genre {
+    margin: 50px;
+    text-align: center;
+  }
+  
+  .cuisine {
+    margin: 50px;
+    text-align: center;
+  
+  }
+  
+  .go-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  }
+  
+  .hero-body {
+    text-align: center;
+    margin: 30px;
+  }
+  
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+  } 
+  
+  .title {
+    font-size: 70px;
+  }
+  
+  option {
+    font-weight: bolder;
+  }
