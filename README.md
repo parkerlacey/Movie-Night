@@ -13,12 +13,12 @@ Deployed website: https://parkerlacey.github.io/Project-1/
 
 ## Future Development
 - Adding Rotten tomatoes and IMDB ratings <br>
-- Providing more parameters for the movie generator <br>
-- Providing more parameters for the cuisine generator
+- Providing more parameters for the movie and cuisine generator <br>
+- Correlating the genre and cuisine type 
 
 ## API's Used
-https://developer.edamam.com/edamam-docs-recipe-api
-
+https://developer.edamam.com/edamam-docs-recipe-api <br>
+https://www.themoviedb.org/documentation/api
 
 ## Contributors
 * Teddy Wang
