@@ -2,7 +2,7 @@
 
 
 ## User Story
-AS A hunger movie connoisseur <br>
+AS A hungry movie connoisseur <br>
 I WANT to find a random movie to watch and meal to consume <br>
 SO THAT I can spice up my monotonous life
 
