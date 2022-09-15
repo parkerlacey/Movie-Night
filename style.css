@@ -1,40 +1,44 @@
 .container-fluid {
   background-image: url("./background.jpeg");
-    height: 100vh;
-  }
-  
-  .genre {
-    margin: 50px;
-    text-align: center;
-  }
-  
-  .cuisine {
-    margin: 50px;
-    text-align: center;
-  
-  }
-  
-  .go-button {
+  height: 34vh;
+}
+
+.genre {
+  margin: 50px;
+  text-align: center;
+}
+
+.cuisine {
+  margin: 50px;
+  text-align: center;
+}
+
+.go-button {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  }
-  
-  .hero-body {
-    text-align: center;
-    margin: 30px;
-  }
-  
-  .button-wrapper {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-  } 
-  
-  .title {
-    font-size: 70px;
-  }
-  
-  option {
-    font-weight: bolder;
-  }
+}
+
+.hero-body {
+  text-align: center;
+  margin: 30px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.title {
+  font-size: 70px;
+}
+
+option {
+  font-weight: bolder;
+}
+
+img {
+  width: 20em;
+  margin-top: 8em;
+}
