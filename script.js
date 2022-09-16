@@ -1,10 +1,12 @@
+// Store API key
+const MOVIEAPIKEY = "b108d9a3c0d6c48286c15205953f2844"
 const appID = "1297eab5"
 const appKey = "f2967fdf6f16b52f8fa2713bd2a6f5de"
+
 var cuisineSearchEl = document.querySelector("#cuisineSearch")
 var recipeOutputEl = document.querySelector("#recipeOutput")
 let generateBtnEl = document.querySelector("#generateBtn")
-// Store API key
-const MOVIEAPIKEY = "b108d9a3c0d6c48286c15205953f2844"
+
 const getRecipeApi = (cuisine) => {
   const urlRecipe =
     "https://api.edamam.com/api/recipes/v2?type=public&q=" +
@@ -85,9 +87,21 @@ function fetchMovieApi(genre) {
         console.log(selectedMovie)
 
         let movieOutputEl = document.querySelector("#movieOutput")
+        movieOutputEl.innerHTML = ""
+
         let imgEl = document.createElement("img")
         movieOutputEl.appendChild(imgEl)
         imgEl.src = IMAGEURL + selectedMovie.poster_path
+
+        let overviewEl = document.createElement("h4")
+        movieOutputEl.appendChild(overviewEl)
+        overviewEl.innerHTML =
+          "<strong>Overview:</strong> " + selectedMovie.overview
+
+        let ratingEl = document.createElement("h4")
+        movieOutputEl.appendChild(ratingEl)
+        ratingEl.innerHTML =
+          "<strong>Rating:</strong> " + selectedMovie.vote_average + "/10"
 
         fetch(
           `https://api.themoviedb.org/3/movie/${selectedMovie.id}/watch/providers?api_key=${MOVIEAPIKEY}`
@@ -99,11 +113,9 @@ function fetchMovieApi(genre) {
                 let link = Object.values(data.results)[0].link.slice(0, -10)
                 console.log(link)
                 let movieEl = document.createElement("a")
-                let movieLinkText = document.createTextNode(
-                  selectedMovie.original_title
-                )
+                let movieLinkText = document.createTextNode(selectedMovie.title)
                 movieEl.appendChild(movieLinkText)
-                movieEl.title = selectedMovie.original_title
+                movieEl.title = selectedMovie.title
                 movieEl.href = link
                 movieEl.classList = "card bbg-primary text-light m-8"
                 movieEl.setAttribute("target", "blank")
