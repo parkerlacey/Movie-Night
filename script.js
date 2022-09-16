@@ -45,19 +45,21 @@ function recipeDisplay(recipes, recipeInput) {
   var recipeLinkText = document.createTextNode(recipeTitle)
   recipeEl.appendChild(recipeLinkText)
   recipeEl.href = recipeUrl
-  recipeEl.classList = "card bbg-primary text-light m-8"
+  recipeEl.classList = "card bbg-primary text-light m-8 title is-4"
   recipeEl.setAttribute("target", "blank")
-  recipeOutputEl.appendChild(recipeEl)
-
-  //display and append yield and time 
-  var yieldTimeEl = document.createElement("div");
-  yieldTimeEl.classList = "card-body text-center";
-  yieldTimeEl.textContent = "Yield: "+recipeYield+" Time:"+recipeTime+" minutes";
-  recipeOutputEl.appendChild(yieldTimeEl);
+  var tempDiv = document.createElement("div")
+  tempDiv.appendChild(recipeEl)
+  recipeOutputEl.appendChild(tempDiv)
+  
+//  //display and append yield and time 
+//   var yieldTimeEl = document.createElement("div");
+//   yieldTimeEl.classList = "card-body text-center";
+//   yieldTimeEl.textContent = "Yield: "+recipeYield+" Time:"+recipeTime+" minutes";
+//   recipeOutputEl.appendChild(yieldTimeEl);
 
   //"Ingredients" title created and append
   var ingredientsTitleEl = document.createElement("h2");
-  ingredientsTitleEl.classList = "title card-body text-center";
+  ingredientsTitleEl.classList = "title is-4 card-body text-center ingredientsTitle";
   ingredientsTitleEl.textContent = "Ingredients"
   recipeOutputEl.appendChild(ingredientsTitleEl);
 
@@ -120,7 +122,8 @@ function fetchMovieApi(genre) {
         let imgEl = document.createElement("img")
         movieOutputEl.appendChild(imgEl)
         imgEl.src = IMAGEURL + selectedMovie.poster_path
-
+        var tempDiv = document.createElement("div")
+        movieOutputEl.appendChild(tempDiv)
         let overviewEl = document.createElement("h4")
         movieOutputEl.appendChild(overviewEl)
         overviewEl.innerHTML =
@@ -145,9 +148,11 @@ function fetchMovieApi(genre) {
                 movieEl.appendChild(movieLinkText)
                 movieEl.title = selectedMovie.title
                 movieEl.href = link
-                movieEl.classList = "card bbg-primary text-light m-8"
+                movieEl.classList = "card bbg-primary text-light m-8 title is-4"
                 movieEl.setAttribute("target", "blank")
-                movieOutputEl.appendChild(movieEl)
+                // let tempDiv = document.createElement("div")
+                 tempDiv.appendChild(movieEl)
+                // movieOutputEl.appendChild(tempDiv)
               }
             })
           }
