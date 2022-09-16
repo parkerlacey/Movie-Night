@@ -85,6 +85,7 @@ function fetchMovieApi(genre) {
         console.log(selectedMovie)
 
         let movieOutputEl = document.querySelector("#movieOutput")
+        movieOutputEl.textContent = ""
         let imgEl = document.createElement("img")
         movieOutputEl.appendChild(imgEl)
         imgEl.src = IMAGEURL + selectedMovie.poster_path
