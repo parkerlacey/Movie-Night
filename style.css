@@ -1,6 +1,27 @@
-.container-fluid {
-  background-image: url("./background.jpeg");
-  height: 34vh;
+body {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+}
+
+.gen-content {
+  margin: auto;
+  width: 90%;
+  
+}
+
+.ingredientsTitle {
+  margin-top: 10px;
+  font-size: 1.25rem;
+}
+
+html { 
+  background: url(./assets/movienight2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .genre {
@@ -24,6 +45,11 @@
   margin: 30px;
 }
 
+.hero.is-small
+.hero-body {
+  padding: 0.5rem;
+}
+
 .button-wrapper {
   display: flex;
   justify-content: center;
@@ -34,11 +60,57 @@
   font-size: 70px;
 }
 
+.title.is-4 {
+  font-size: 1.75rem;
+  background-color: white;
+  margin-bottom: 0px;
+}
+
+h4 {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: -11px;
+  font-size: 1.1rem;
+}
+
 option {
   font-weight: bolder;
 }
 
 img {
   width: 20em;
-  margin-top: 8em;
+  margin-top: 4em;
+  margin-top: 4em;
+  margin-left: 4em;
+  margin-bottom: 1em;
+}
+
+#recipeOutput {
+  padding: 0%;
+  margin-bottom: 22px;
+  
+}
+
+#movieOutput {
+  padding: 0%;
+  margin-right: 10px;
+}
+
+.card-body.text-center {
+  background-color: white;
+  font-size: 1.4rem;
+  
+}
+
+ul {
+  background-color: white;
+  font-size: 1.1rem;
+}
+
+.label {
+  color: white;
+}
+
+#text {
+  margin-bottom: 0;
 }

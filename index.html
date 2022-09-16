@@ -19,13 +19,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
-    <title>Netflix & Chill</title>
+    <title>Movie Night</title>
   </head>
   <body>
     <header>
-      <section class="hero is-small is-danger">
+      <section class="hero is-small is-info">
         <div class="hero-body">
-          <p class="title">Netflix & Chill</p>
+          <p class="title">Movie Night</p>
           <p class="subtitle">Movie and Recipe Generator</p>
         </div>
       </section>
@@ -34,7 +34,7 @@
     <main class="container-fluid">
       <section class="button-wrapper">
         <div class="genre">
-          <label class="label has-text-danger">Genre Type</label>
+          <label class="label">Genre Type</label>
           <div class="control">
             <div class="select">
               <select id="genre-input">
@@ -65,7 +65,7 @@
           </div>
         </div>
         <form id="cuisineSearch" class="cuisine">
-          <label class="label has-text-danger">Cuisine Type</label>
+          <label class="label">Cuisine Type</label>
           <div class="control">
             <div class="select">
               <select id="cuisineType">
@@ -90,15 +90,17 @@
         </form>
       </section>
       <div class="go-button">
-        <button id="generateBtn" class="button is-danger" type="submit">
+        <button id="generateBtn" class="button is-info" type="submit">
           Generate Suggestion
         </button>
       </div>
       
-      <div class="columns">
-        <div class="column" id="movieOutput"></div>   <!--everything movie related from JS is appended to this id-->
-        <div class="column" id="recipeOutput"></div>  <!--everything recipe related from JS is appended to this id-->
-      </div>
+     <div class="gen-content">
+        <div class="columns is-3">
+          <div class="column" id="movieOutput"></div>   <!--everything movie related from JS is appended to this id-->
+          <div class="column" id="recipeOutput"></div>  <!--everything recipe related from JS is appended to this id-->
+        </div>
+     </div>
     </main>
 
     <script src="script.js"></script>
