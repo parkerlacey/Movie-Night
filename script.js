@@ -22,28 +22,56 @@ const getRecipeApi = (cuisine) => {
   })
 }
 
+//Displays data returned from the recipe API
 function recipeDisplay(recipes, recipeInput) {
   recipeOutputEl.textContent = ""
-  console.log(recipes)
-  // console.log(recipeInput);
   var randomIndex = Math.floor(Math.random() * 20)
   var recipeTitle = recipes["hits"][randomIndex]["recipe"]["label"]
   var recipeUrl = recipes["hits"][randomIndex]["recipe"]["shareAs"]
   var recipeImage = recipes["hits"][randomIndex]["recipe"]["image"]
+  var recipeTime = recipes["hits"][randomIndex]["recipe"]["totalTime"]
+  var recipeYield = recipes["hits"][randomIndex]["recipe"]["yield"]
 
+  //picture of food from recipe
   var recipeImageEl = document.createElement("img")
   recipeImageEl.classList = "card-body text-center"
   recipeImageEl.setAttribute("src", recipeImage)
   recipeOutputEl.appendChild(recipeImageEl)
 
+  //name of recipe, which is also a hyperlink
   var recipeEl = document.createElement("a")
   var recipeLinkText = document.createTextNode(recipeTitle)
   recipeEl.appendChild(recipeLinkText)
-  recipeEl.title = "test"
   recipeEl.href = recipeUrl
   recipeEl.classList = "card bbg-primary text-light m-8"
   recipeEl.setAttribute("target", "blank")
   recipeOutputEl.appendChild(recipeEl)
+
+  //display and append yield and time 
+  var yieldTimeEl = document.createElement("div");
+  yieldTimeEl.classList = "card-body text-center";
+  yieldTimeEl.textContent = "Yield: "+recipeYield+" Time:"+recipeTime+" minutes";
+  recipeOutputEl.appendChild(yieldTimeEl);
+
+  //"Ingredients" title created and append
+  var ingredientsTitleEl = document.createElement("h2");
+  ingredientsTitleEl.classList = "title card-body text-center";
+  ingredientsTitleEl.textContent = "Ingredients"
+  recipeOutputEl.appendChild(ingredientsTitleEl);
+
+  //create an unorderedlist for the ingredients
+  var ingredientsEl = document.createElement("ul");
+  ingredientsEl.setAttribute("id", "ingredientsList");
+  var ingredientsLength = recipes["hits"][randomIndex]["recipe"]["ingredientLines"].length;
+
+  for (i=0; i<ingredientsLength; i++) {
+  var recipeIngredients = recipes["hits"][randomIndex]["recipe"]["ingredientLines"][i];
+  var li = document.createElement("li");
+  li.innerHTML=recipeIngredients;
+  li.setAttribute("style", "display:block;");
+  ingredientsEl.appendChild(li);
+  }
+  recipeOutputEl.appendChild(ingredientsEl);
 }
 
 function cuisineSearchSubmit(event) {
@@ -132,3 +160,11 @@ function getRandomInt(min, max) {
 
 // Function to fetch link to watch movie
 function fetchMovieLink(movieId) {}
+
+
+
+
+
+
+
+
