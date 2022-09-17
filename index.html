@@ -15,11 +15,6 @@
     />
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
-      rel="stylesheet" -->
-    />
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
@@ -100,7 +95,7 @@
         <button id="generateBtn" class="button is-info" type="submit">Generate Suggestion</button>
       </div>
       <div class="buttons is-one-third is-centered">
-        <button class="button is-danger is-responsive"  id="lanuchModal">Saved Favorites</button>
+        <button class="button is-danger is-responsive"  id="launchModal">Show Favorites</button>
       </div>
 
       <div class="gen-content">
@@ -121,10 +116,10 @@
         <section class="modal-card-body">
           <div class="content">
             <h1><i class="fa-solid fa-heart" style="color:#f14668;"></i> Favorites <i class="fa-solid fa-heart" style="color:#f14668;"></i></h1>
-            <h2>Movies</h2>
-            <p>Movie links</p>
-            <h2>Recipes</h2>
-            <p>Recipe Links</p>
+            <h2>Movie Links:</h2>
+            <div id="fav-movie"></div>
+            <h2>Recipe Links:</h2>
+            <div id="fav-recipe"></div>
           <div>  
         </section>
         <footer class="modal-card-foot">
