@@ -3,6 +3,11 @@ const MOVIEAPIKEY = "b108d9a3c0d6c48286c15205953f2844"
 const appID = "1297eab5"
 const appKey = "f2967fdf6f16b52f8fa2713bd2a6f5de"
 
+let movieObj = {}
+let movieObjs = []
+let recipeObj = {}
+let recipeObjs = []
+
 // Get necessary elements from dom
 var cuisineSearchEl = document.querySelector("#cuisineSearch")
 var recipeOutputEl = document.querySelector("#recipeOutput")
@@ -54,6 +59,10 @@ function recipeDisplay(recipes, recipeInput) {
   tempDiv.appendChild(recipeEl)
   recipeOutputEl.appendChild(tempDiv)
 
+  recipeObj.title = recipeTitle
+  recipeObj.link = recipeUrl
+  let recipeObj_stringified = JSON.stringify(recipeObj)
+
   //"Ingredients" title created and append
   var ingredientsTitleEl = document.createElement("h2")
   ingredientsTitleEl.classList = ""
@@ -70,33 +79,41 @@ function recipeDisplay(recipes, recipeInput) {
     var recipeIngredients =
       recipes["hits"][randomIndex]["recipe"]["ingredientLines"][i]
     var li = document.createElement("li")
-    li.innerHTML = "• "+recipeIngredients
+    li.innerHTML = "• " + recipeIngredients
     li.setAttribute("style", "display:block;")
     ingredientsEl.appendChild(li)
   }
   recipeOutputEl.appendChild(ingredientsEl)
 
-    //display and append yield and time
-var yieldTimeEl = document.createElement("div")
-yieldTimeEl.classList = "card-body text-center"
-yieldTimeEl.innerHTML = "<br><b>Yield: </b>"+recipeYield+"&emsp;"+"<b>Time: </b>"+recipeTime+" minutes<br><br>"
-recipeOutputEl.appendChild(yieldTimeEl)
+  //display and append yield and time
+  var yieldTimeEl = document.createElement("div")
+  yieldTimeEl.classList = "card-body text-center"
+  yieldTimeEl.innerHTML =
+    "<br><b>Yield: </b>" +
+    recipeYield +
+    "&emsp;" +
+    "<b>Time: </b>" +
+    recipeTime +
+    " minutes<br><br>"
+  recipeOutputEl.appendChild(yieldTimeEl)
 
-//favorite icon
-var pEl = document.createElement("p")
-var buttonEl = document.createElement("button")
-var spanEl = document.createElement("span")
-var iEl = document.createElement("i")
-pEl.classList = "buttons"
-buttonEl.classList = "button is-danger is-outlined"
-spanEl.classList = "icon is-small"
-iEl.classList = "fa-regular fa-heart"
-spanEl.appendChild(iEl)
-buttonEl.appendChild(spanEl)
-pEl.appendChild(buttonEl)
+  //favorite icon
+  var pEl = document.createElement("p")
+  var buttonEl = document.createElement("button")
+  var spanEl = document.createElement("span")
+  var iEl = document.createElement("i")
+  pEl.classList = "buttons"
+  buttonEl.classList = "button is-danger is-outlined"
+  spanEl.classList = "icon is-small"
+  iEl.classList = "fa-regular fa-heart"
+  spanEl.appendChild(iEl)
+  buttonEl.appendChild(spanEl)
+  pEl.appendChild(buttonEl)
 
-recipeOutputEl.appendChild(pEl)
-
+  recipeOutputEl.appendChild(pEl)
+  buttonEl.addEventListener("click", () => {
+    localStorage.setItem("recipeObj", recipeObj_stringified)
+  })
 }
 
 function cuisineSearchSubmit(event) {
@@ -159,19 +176,19 @@ function fetchMovieApi(genre) {
           "<b>Rating:</b> " + selectedMovie.vote_average + "/10<br><br>"
 
         //favorite icon
-          var pEl = document.createElement("p")
-          var buttonEl = document.createElement("button")
-          var spanEl = document.createElement("span")
-          var iEl = document.createElement("i")
-          pEl.classList = "buttons"
-          buttonEl.classList = "button is-danger is-outlined"
-          spanEl.classList = "icon is-small"
-          iEl.classList = "fa-regular fa-heart"
-          spanEl.appendChild(iEl)
-          buttonEl.appendChild(spanEl)
-          pEl.appendChild(buttonEl)
-          
-          movieOutputEl.appendChild(pEl)
+        var pEl = document.createElement("p")
+        var buttonEl = document.createElement("button")
+        var spanEl = document.createElement("span")
+        var iEl = document.createElement("i")
+        pEl.classList = "buttons"
+        buttonEl.classList = "button is-danger is-outlined"
+        spanEl.classList = "icon is-small"
+        iEl.classList = "fa-regular fa-heart"
+        spanEl.appendChild(iEl)
+        buttonEl.appendChild(spanEl)
+        pEl.appendChild(buttonEl)
+
+        movieOutputEl.appendChild(pEl)
 
         // Fetch api for link to watch movie
         fetch(
@@ -189,6 +206,13 @@ function fetchMovieApi(genre) {
                 movieEl.classList = ""
                 movieEl.setAttribute("target", "blank")
                 tempDiv.appendChild(movieEl)
+                movieObj.title = selectedMovie.title
+                movieObj.link = link
+                movieObjs.push(movieObj)
+                let movieObjs_stringified = JSON.stringify(movieObjs)
+                buttonEl.addEventListener("click", () => {
+                  localStorage.setItem("movieObjs", movieObjs_stringified)
+                })
               }
             })
           }
@@ -209,5 +233,3 @@ function getRandomInt(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min) + min)
 }
-
-let suggestionCard = document.querySelector(".suggestion-card")
