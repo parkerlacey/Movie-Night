@@ -3,10 +3,12 @@ const MOVIEAPIKEY = "b108d9a3c0d6c48286c15205953f2844"
 const appID = "1297eab5"
 const appKey = "f2967fdf6f16b52f8fa2713bd2a6f5de"
 
+// Get necessary elements from dom
 var cuisineSearchEl = document.querySelector("#cuisineSearch")
 var recipeOutputEl = document.querySelector("#recipeOutput")
 let generateBtnEl = document.querySelector("#generateBtn")
 
+// Fetch recipe api function
 const getRecipeApi = (cuisine) => {
   const urlRecipe =
     "https://api.edamam.com/api/recipes/v2?type=public&q=" +
@@ -27,6 +29,7 @@ const getRecipeApi = (cuisine) => {
 //Displays data returned from the recipe API
 function recipeDisplay(recipes, recipeInput) {
   recipeOutputEl.textContent = ""
+  recipeOutputEl.classList.add("card", "column")
   var randomIndex = Math.floor(Math.random() * 20)
   var recipeTitle = recipes["hits"][randomIndex]["recipe"]["label"]
   var recipeUrl = recipes["hits"][randomIndex]["recipe"]["shareAs"]
@@ -36,7 +39,7 @@ function recipeDisplay(recipes, recipeInput) {
 
   //picture of food from recipe
   var recipeImageEl = document.createElement("img")
-  recipeImageEl.classList = "card-body text-center"
+  recipeImageEl.classList = ""
   recipeImageEl.setAttribute("src", recipeImage)
   recipeOutputEl.appendChild(recipeImageEl)
 
@@ -45,47 +48,44 @@ function recipeDisplay(recipes, recipeInput) {
   var recipeLinkText = document.createTextNode(recipeTitle)
   recipeEl.appendChild(recipeLinkText)
   recipeEl.href = recipeUrl
-  recipeEl.classList = "bbg-primary text-light m-8 title is-4"
+  recipeEl.classList = ""
   recipeEl.setAttribute("target", "blank")
   var tempDiv = document.createElement("div")
   tempDiv.appendChild(recipeEl)
   recipeOutputEl.appendChild(tempDiv)
-  
-//  //display and append yield and time 
-//   var yieldTimeEl = document.createElement("div");
-//   yieldTimeEl.classList = "card-body text-center";
-//   yieldTimeEl.textContent = "Yield: "+recipeYield+" Time:"+recipeTime+" minutes";
-//   recipeOutputEl.appendChild(yieldTimeEl);
 
   //"Ingredients" title created and append
-  var ingredientsTitleEl = document.createElement("h2");
-  ingredientsTitleEl.classList = "title is-4 card-body text-center ingredientsTitle";
+  var ingredientsTitleEl = document.createElement("h2")
+  ingredientsTitleEl.classList = ""
   ingredientsTitleEl.textContent = "Ingredients"
-  recipeOutputEl.appendChild(ingredientsTitleEl);
+  recipeOutputEl.appendChild(ingredientsTitleEl)
 
   //create an unorderedlist for the ingredients
-  var ingredientsEl = document.createElement("ul");
-  ingredientsEl.setAttribute("id", "ingredientsList");
-  var ingredientsLength = recipes["hits"][randomIndex]["recipe"]["ingredientLines"].length;
+  var ingredientsEl = document.createElement("ul")
+  ingredientsEl.setAttribute("id", "ingredientsList")
+  var ingredientsLength =
+    recipes["hits"][randomIndex]["recipe"]["ingredientLines"].length
 
-  for (i=0; i<ingredientsLength; i++) {
-  var recipeIngredients = recipes["hits"][randomIndex]["recipe"]["ingredientLines"][i];
-  var li = document.createElement("li");
-  li.innerHTML=recipeIngredients;
-  li.setAttribute("style", "display:block;");
-  ingredientsEl.appendChild(li);
+  for (i = 0; i < ingredientsLength; i++) {
+    var recipeIngredients =
+      recipes["hits"][randomIndex]["recipe"]["ingredientLines"][i]
+    var li = document.createElement("li")
+    li.innerHTML = recipeIngredients
+    li.setAttribute("style", "display:block;")
+    ingredientsEl.appendChild(li)
   }
-  recipeOutputEl.appendChild(ingredientsEl);
+  recipeOutputEl.appendChild(ingredientsEl)
 }
 
 function cuisineSearchSubmit(event) {
   event.preventDefault()
   var formatInputVal = document.querySelector("#cuisineType").value
-  // console.log(formatInputVal);
   getRecipeApi(formatInputVal)
 }
 
 cuisineSearchEl.addEventListener("submit", cuisineSearchSubmit)
+
+// Add event listener to the generate suggestion button
 generateBtnEl.addEventListener("click", callAPIs)
 
 // Random movie function
@@ -93,7 +93,6 @@ let genreInput
 function handleRandomMovieBtn(event) {
   event.preventDefault()
   genreInput = document.querySelector("#genre-input").value
-  console.log(genreInput)
   fetchMovieApi(genreInput)
 }
 
@@ -109,50 +108,48 @@ function fetchMovieApi(genre) {
   ).then((response) => {
     if (response.ok) {
       response.json().then((data) => {
-        console.log(data)
         // Get a random movie from the result
         let resultLength = data.results.length
         let randomNum = getRandomInt(0, resultLength)
         let selectedMovie = data.results[randomNum]
-        console.log(selectedMovie)
 
+        // Movie Output div
         let movieOutputEl = document.querySelector("#movieOutput")
+        movieOutputEl.classList.add("card", "column")
         movieOutputEl.innerHTML = ""
 
+        // Create image div
         let imgEl = document.createElement("img")
         movieOutputEl.appendChild(imgEl)
         imgEl.src = IMAGEURL + selectedMovie.poster_path
         var tempDiv = document.createElement("div")
         movieOutputEl.appendChild(tempDiv)
-        let overviewEl = document.createElement("h4")
+        let overviewEl = document.createElement("h3")
         movieOutputEl.appendChild(overviewEl)
-        overviewEl.innerHTML =
-          "<strong>Overview:</strong> " + selectedMovie.overview
+        overviewEl.innerHTML = "<b>Overview:</b> " + selectedMovie.overview
 
-        let ratingEl = document.createElement("h4")
+        // Create rating div
+        let ratingEl = document.createElement("h3")
         movieOutputEl.appendChild(ratingEl)
         ratingEl.innerHTML =
-          "<strong>Rating:</strong> " + selectedMovie.vote_average + "/10"
+          "<b>Rating:</b> " + selectedMovie.vote_average + "/10"
 
+        // Fetch api for link to watch movie
         fetch(
           `https://api.themoviedb.org/3/movie/${selectedMovie.id}/watch/providers?api_key=${MOVIEAPIKEY}`
         ).then((response) => {
           if (response.ok) {
             response.json().then((data) => {
-              console.log(data)
               if (data.results) {
                 let link = Object.values(data.results)[0].link.slice(0, -10)
-                console.log(link)
                 let movieEl = document.createElement("a")
                 let movieLinkText = document.createTextNode(selectedMovie.title)
                 movieEl.appendChild(movieLinkText)
                 movieEl.title = selectedMovie.title
                 movieEl.href = link
-                movieEl.classList = "bbg-primary text-light m-8 title is-4"
+                movieEl.classList = ""
                 movieEl.setAttribute("target", "blank")
-                // let tempDiv = document.createElement("div")
-                 tempDiv.appendChild(movieEl)
-                // movieOutputEl.appendChild(tempDiv)
+                tempDiv.appendChild(movieEl)
               }
             })
           }
@@ -176,11 +173,3 @@ function getRandomInt(min, max) {
 
 // Function to fetch link to watch movie
 function fetchMovieLink(movieId) {}
-
-
-
-
-
-
-
-

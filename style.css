@@ -2,23 +2,20 @@ body {
   width: 100%;
   box-sizing: border-box;
   position: relative;
-
 }
 
 .gen-content {
   margin: auto;
   width: 90%;
-  
 }
 
 .ingredientsTitle {
   margin-top: 10px;
   font-size: 1.25rem;
-  color: white;
 }
 
-html { 
-  background: url(./assets/movienight2.jpg) no-repeat center center fixed; 
+html {
+  background: url(./assets/movienight2.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -38,7 +35,8 @@ html {
 .go-button {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 70px;
 }
 
 .hero-body {
@@ -46,15 +44,13 @@ html {
   margin: 30px;
 }
 
-.hero.is-small
-.hero-body {
+.hero.is-small .hero-body {
   padding: 0.5rem;
 }
 
 .button-wrapper {
   display: flex;
   justify-content: center;
-  padding: 50px;
 }
 
 .title {
@@ -63,79 +59,41 @@ html {
 
 .title.is-4 {
   font-size: 1.75rem;
-  margin-bottom: 3px;
-  background-color: none;
-  color: white;
-  border-bottom: 2px;
-  border-bottom-color: white;
-  border-bottom-style: solid;
+  background-color: white;
+  margin-bottom: 0px;
 }
 
 h4 {
   margin-top: 10px;
-  margin-bottom: -11px;
-  font-size: 1.12rem;
-  color: white;
-  font-weight: 450;
 }
 
 option {
   font-weight: bolder;
 }
 
-img {
-  width: 20em;
-  margin-top: 4em;
-  margin-top: 4em;
-  margin-left: 4em;
-  margin-bottom: 1em;
-}
-
-#recipeOutput {
-  padding: 0%;
-  margin-bottom: 22px;
-  
-}
-
-#movieOutput {
-  padding: 0%;
-  margin-right: 10px;
-}
-
-.card-body.text-center {
-  font-size: 1.4rem;
-  
-}
-
-ul {
-  font-size: 1.1rem;
-  color: white;
-  font-weight: 450;
-}
-
 .label {
   color: white;
 }
 
-#text {
-  margin-bottom: 0;
+img {
+  height: 50%;
+  max-width: 100%;
 }
-
-strong {
-  color: white;
-  font-size: 1.12rem;
-  font-weight: 800;
-}
-
 .card {
-  background-color: none !important;
+  margin-left: 3em;
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
 }
 
-.button.is-info {
-  background-color: #3e8ed0;
-  color: #fff;
-  position: relative;
-  border-color: #fff;
-  top: -14px;
+a {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+h3 {
+  margin-top: 0.7em;
 }
