@@ -55,6 +55,8 @@ html {
 
 .title {
   font-size: 70px;
+  font-family: 'Monoton', cursive;
+
 }
 
 .title.is-4 {
@@ -96,4 +98,7 @@ h2 {
 }
 h3 {
   margin-top: 0.7em;
+}
+.hide {
+  display:none;
 }

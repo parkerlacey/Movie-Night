@@ -7,6 +7,9 @@ const appKey = "f2967fdf6f16b52f8fa2713bd2a6f5de"
 var cuisineSearchEl = document.querySelector("#cuisineSearch")
 var recipeOutputEl = document.querySelector("#recipeOutput")
 let generateBtnEl = document.querySelector("#generateBtn")
+var favoriteResContainer = document.querySelector(".recipeFav")
+let recipeFavorites = [];
+let movieFavorites = [];
 
 // Fetch recipe api function
 const getRecipeApi = (cuisine) => {
@@ -83,19 +86,24 @@ yieldTimeEl.innerHTML = "<br><b>Yield: </b>"+recipeYield+"&emsp;"+"<b>Time: </b>
 recipeOutputEl.appendChild(yieldTimeEl)
 
 //favorite icon
-var pEl = document.createElement("p")
-var buttonEl = document.createElement("button")
-var spanEl = document.createElement("span")
-var iEl = document.createElement("i")
-pEl.classList = "buttons"
-buttonEl.classList = "button is-danger is-outlined"
-spanEl.classList = "icon is-small"
-iEl.classList = "fa-regular fa-heart"
-spanEl.appendChild(iEl)
-buttonEl.appendChild(spanEl)
-pEl.appendChild(buttonEl)
+var pResEl = document.createElement("p")
+var buttonResEl = document.createElement("button")
+var spanResEl = document.createElement("span")
+var iResEl = document.createElement("i")
+pResEl.classList = "buttons"
+buttonResEl.classList = "button recipeFav is-danger is-responsive is-outlined"
+spanResEl.classList = "icon is-small"
+iResEl.classList = "fa-regular fa-heart"
+spanResEl.appendChild(iResEl)
+buttonResEl.appendChild(spanResEl)
+pResEl.appendChild(buttonResEl)
 
-recipeOutputEl.appendChild(pEl)
+recipeOutputEl.appendChild(pResEl)
+
+// favoriteResContainer.addEventListener("click", (event)=>{
+//   event.preventDefault()
+//   var 
+// })
 
 }
 
@@ -162,7 +170,7 @@ function fetchMovieApi(genre) {
           var spanEl = document.createElement("span")
           var iEl = document.createElement("i")
           pEl.classList = "buttons"
-          buttonEl.classList = "button is-danger is-outlined"
+          buttonEl.classList = "button movieFav is-danger is-responsive is-outlined"
           spanEl.classList = "icon is-small"
           iEl.classList = "fa-regular fa-heart"
           spanEl.appendChild(iEl)
@@ -196,6 +204,20 @@ function fetchMovieApi(genre) {
   })
 }
 
+//stores favorite recipe 
+var recipeStor = (favorite)=> {
+  if (!recipeFavorites.includes(favorite)){
+    recipeFavorites.push(favorite)
+    localStorage.setItem("Favorites", JSON.stringify(recipeFavorites))
+    var btn=document.createElement("button")
+    btn.setAttribute("class", "button")
+    btn.setAttribute("value", favorite)
+    btn.textContent=favorite
+    favoriteContainer.append(btn)
+  }
+  allFavorites=JSON.parse(localStorage.getItem("history"))|| []
+}
+
 function callAPIs(e) {
   handleRandomMovieBtn(e)
   cuisineSearchSubmit(e)
@@ -210,3 +232,24 @@ function getRandomInt(min, max) {
 
 // Function to fetch link to watch movie
 function fetchMovieLink(movieId) {}
+
+
+$(document).ready(function(){
+  // $(".modal").addClass("is-active");
+
+$("#lanuchModal").click(function() {
+$(".modal").addClass("is-active");  
+});
+
+// $(".modal-close").click(function() {
+//  $(".modal").removeClass("is-active");
+// });
+
+$("#closebtn").click(function() {
+ $(".modal").removeClass("is-active");
+});
+// $("#closetop").click(function() {
+//  $(".modal").removeClass("is-active");
+// });
+});
+
