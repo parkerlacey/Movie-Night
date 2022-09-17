@@ -45,7 +45,7 @@ function recipeDisplay(recipes, recipeInput) {
   var recipeLinkText = document.createTextNode(recipeTitle)
   recipeEl.appendChild(recipeLinkText)
   recipeEl.href = recipeUrl
-  recipeEl.classList = "card bbg-primary text-light m-8 title is-4"
+  recipeEl.classList = "bbg-primary text-light m-8 title is-4"
   recipeEl.setAttribute("target", "blank")
   var tempDiv = document.createElement("div")
   tempDiv.appendChild(recipeEl)
@@ -148,7 +148,7 @@ function fetchMovieApi(genre) {
                 movieEl.appendChild(movieLinkText)
                 movieEl.title = selectedMovie.title
                 movieEl.href = link
-                movieEl.classList = "card bbg-primary text-light m-8 title is-4"
+                movieEl.classList = "bbg-primary text-light m-8 title is-4"
                 movieEl.setAttribute("target", "blank")
                 // let tempDiv = document.createElement("div")
                  tempDiv.appendChild(movieEl)
