@@ -3,11 +3,17 @@ const MOVIEAPIKEY = "b108d9a3c0d6c48286c15205953f2844"
 const appID = "1297eab5"
 const appKey = "f2967fdf6f16b52f8fa2713bd2a6f5de"
 
+// Create objects
 let movieObj = {}
 let movieObjs = []
+if (localStorage.getItem("movieObjs")) {
+  movieObjs = JSON.parse(localStorage.getItem("movieObjs"))
+}
 let recipeObj = {}
 let recipeObjs = []
-
+if (localStorage.getItem("recipeObjs")) {
+  recipeObjs = JSON.parse(localStorage.getItem("recipeObjs"))
+}
 // Get necessary elements from dom
 var cuisineSearchEl = document.querySelector("#cuisineSearch")
 var recipeOutputEl = document.querySelector("#recipeOutput")
@@ -59,9 +65,12 @@ function recipeDisplay(recipes, recipeInput) {
   tempDiv.appendChild(recipeEl)
   recipeOutputEl.appendChild(tempDiv)
 
+  // Local storage
+  recipeObj = {}
   recipeObj.title = recipeTitle
   recipeObj.link = recipeUrl
-  let recipeObj_stringified = JSON.stringify(recipeObj)
+  recipeObjs.push(recipeObj)
+  let recipeObjs_stringified = JSON.stringify(recipeObjs)
 
   //"Ingredients" title created and append
   var ingredientsTitleEl = document.createElement("h2")
@@ -112,7 +121,7 @@ function recipeDisplay(recipes, recipeInput) {
 
   recipeOutputEl.appendChild(pEl)
   buttonEl.addEventListener("click", () => {
-    localStorage.setItem("recipeObj", recipeObj_stringified)
+    localStorage.setItem("recipeObjs", recipeObjs_stringified)
   })
 }
 
@@ -206,6 +215,9 @@ function fetchMovieApi(genre) {
                 movieEl.classList = ""
                 movieEl.setAttribute("target", "blank")
                 tempDiv.appendChild(movieEl)
+
+                // Local storage
+                movieObj = {}
                 movieObj.title = selectedMovie.title
                 movieObj.link = link
                 movieObjs.push(movieObj)
