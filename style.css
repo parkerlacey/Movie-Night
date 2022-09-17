@@ -130,3 +130,11 @@ strong {
   background-color: none !important;
   color: white;
 }
+
+.button.is-info {
+  background-color: #3e8ed0;
+  color: #fff;
+  position: relative;
+  border-color: #fff;
+  top: -14px;
+}
