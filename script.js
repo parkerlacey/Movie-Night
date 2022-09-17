@@ -124,6 +124,8 @@ function fetchMovieApi(genre) {
         imgEl.src = IMAGEURL + selectedMovie.poster_path
         var tempDiv = document.createElement("div")
         movieOutputEl.appendChild(tempDiv)
+
+        // Create an overview div
         let overviewEl = document.createElement("h3")
         movieOutputEl.appendChild(overviewEl)
         overviewEl.innerHTML = "<b>Overview:</b> " + selectedMovie.overview
@@ -171,5 +173,4 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
-// Function to fetch link to watch movie
-function fetchMovieLink(movieId) {}
+let suggestionCard = document.querySelector(".suggestion-card")
