@@ -124,6 +124,7 @@ ul {
 strong {
   color: white;
   font-size: 1.12rem;
+  font-weight: 800;
 }
 
 .card {
