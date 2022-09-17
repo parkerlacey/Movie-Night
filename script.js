@@ -245,3 +245,25 @@ function getRandomInt(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min) + min)
 }
+
+// Function to fetch link to watch movie
+function fetchMovieLink(movieId) {}
+
+$(document).ready(function () {
+  // $(".modal").addClass("is-active");
+
+  $("#lanuchModal").click(function () {
+    $(".modal").addClass("is-active")
+  })
+
+  // $(".modal-close").click(function() {
+  //  $(".modal").removeClass("is-active");
+  // });
+
+  $("#closebtn").click(function () {
+    $(".modal").removeClass("is-active")
+  })
+  // $("#closetop").click(function() {
+  //  $(".modal").removeClass("is-active");
+  // });
+})
