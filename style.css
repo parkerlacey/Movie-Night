@@ -14,6 +14,7 @@ body {
 .ingredientsTitle {
   margin-top: 10px;
   font-size: 1.25rem;
+  color: white;
 }
 
 html { 
@@ -62,15 +63,20 @@ html {
 
 .title.is-4 {
   font-size: 1.75rem;
-  background-color: white;
-  margin-bottom: 0px;
+  margin-bottom: 3px;
+  background-color: none;
+  color: white;
+  border-bottom: 2px;
+  border-bottom-color: white;
+  border-bottom-style: solid;
 }
 
 h4 {
-  background-color: white;
   margin-top: 10px;
   margin-bottom: -11px;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
+  color: white;
+  font-weight: 450;
 }
 
 option {
@@ -97,14 +103,14 @@ img {
 }
 
 .card-body.text-center {
-  background-color: white;
   font-size: 1.4rem;
   
 }
 
 ul {
-  background-color: white;
   font-size: 1.1rem;
+  color: white;
+  font-weight: 450;
 }
 
 .label {
@@ -113,4 +119,23 @@ ul {
 
 #text {
   margin-bottom: 0;
+}
+
+strong {
+  color: white;
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+
+.card {
+  background-color: none !important;
+  color: white;
+}
+
+.button.is-info {
+  background-color: #3e8ed0;
+  color: #fff;
+  position: relative;
+  border-color: #fff;
+  top: -14px;
 }
