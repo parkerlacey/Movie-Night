@@ -3,18 +3,24 @@ const MOVIEAPIKEY = "b108d9a3c0d6c48286c15205953f2844"
 const appID = "1297eab5"
 const appKey = "f2967fdf6f16b52f8fa2713bd2a6f5de"
 
+// Create objects
 let movieObj = {}
 let movieObjs = []
+let storedMovieInput = localStorage.getItem("movieObjs")
+if (storedMovieInput) {
+  movieObjs = JSON.parse(storedMovieInput)
+}
+
 let recipeObj = {}
 let recipeObjs = []
-
+let storedRecipeInput = localStorage.getItem("recipeObjs")
+if (storedRecipeInput) {
+  recipeObjs = JSON.parse(storedRecipeInput)
+}
 // Get necessary elements from dom
-var cuisineSearchEl = document.querySelector("#cuisineSearch")
-var recipeOutputEl = document.querySelector("#recipeOutput")
+let cuisineSearchEl = document.querySelector("#cuisineSearch")
+let recipeOutputEl = document.querySelector("#recipeOutput")
 let generateBtnEl = document.querySelector("#generateBtn")
-var favoriteResContainer = document.querySelector(".recipeFav")
-let recipeFavorites = [];
-let movieFavorites = [];
 
 // Fetch recipe api function
 const getRecipeApi = (cuisine) => {
@@ -38,89 +44,99 @@ const getRecipeApi = (cuisine) => {
 function recipeDisplay(recipes, recipeInput) {
   recipeOutputEl.textContent = ""
   recipeOutputEl.classList.add("card", "column")
-  var randomIndex = Math.floor(Math.random() * 20)
-  var recipeTitle = recipes["hits"][randomIndex]["recipe"]["label"]
-  var recipeUrl = recipes["hits"][randomIndex]["recipe"]["shareAs"]
-  var recipeImage = recipes["hits"][randomIndex]["recipe"]["image"]
-  var recipeTime = recipes["hits"][randomIndex]["recipe"]["totalTime"]
-  var recipeYield = recipes["hits"][randomIndex]["recipe"]["yield"]
+  let randomIndex = Math.floor(Math.random() * 20)
+  let recipeTitle = recipes["hits"][randomIndex]["recipe"]["label"]
+  let recipeUrl = recipes["hits"][randomIndex]["recipe"]["shareAs"]
+  let recipeImage = recipes["hits"][randomIndex]["recipe"]["image"]
+  let recipeTime = recipes["hits"][randomIndex]["recipe"]["totalTime"]
+  let recipeYield = recipes["hits"][randomIndex]["recipe"]["yield"]
 
   //picture of food from recipe
-  var recipeImageEl = document.createElement("img")
+  let recipeImageEl = document.createElement("img")
   recipeImageEl.classList = ""
   recipeImageEl.setAttribute("src", recipeImage)
   recipeOutputEl.appendChild(recipeImageEl)
 
   //name of recipe, which is also a hyperlink
-  var recipeEl = document.createElement("a")
-  var recipeLinkText = document.createTextNode(recipeTitle)
+  let recipeEl = document.createElement("a")
+  let recipeLinkText = document.createTextNode(recipeTitle)
   recipeEl.appendChild(recipeLinkText)
   recipeEl.href = recipeUrl
   recipeEl.classList = ""
   recipeEl.setAttribute("target", "blank")
-  var tempDiv = document.createElement("div")
+  let tempDiv = document.createElement("div")
   tempDiv.appendChild(recipeEl)
   recipeOutputEl.appendChild(tempDiv)
 
+  // Local storage
+  recipeObj = {}
   recipeObj.title = recipeTitle
   recipeObj.link = recipeUrl
-  let recipeObj_stringified = JSON.stringify(recipeObj)
+
+  // Limit to 5 recipes
+  if (recipeObjs.length === 5) {
+    recipeObjs.shift()
+  }
+  recipeObjs.push(recipeObj)
+
+  let recipeObjs_stringified = JSON.stringify(recipeObjs)
 
   //"Ingredients" title created and append
-  var ingredientsTitleEl = document.createElement("h2")
+  let ingredientsTitleEl = document.createElement("h2")
   ingredientsTitleEl.classList = ""
   ingredientsTitleEl.textContent = "Ingredients"
   recipeOutputEl.appendChild(ingredientsTitleEl)
 
   //create an unorderedlist for the ingredients
-  var ingredientsEl = document.createElement("ul")
+  let ingredientsEl = document.createElement("ul")
   ingredientsEl.setAttribute("id", "ingredientsList")
-  var ingredientsLength =
+  let ingredientsLength =
     recipes["hits"][randomIndex]["recipe"]["ingredientLines"].length
 
   for (i = 0; i < ingredientsLength; i++) {
-    var recipeIngredients =
+    let recipeIngredients =
       recipes["hits"][randomIndex]["recipe"]["ingredientLines"][i]
-    var li = document.createElement("li")
+    let li = document.createElement("li")
     li.innerHTML = "• " + recipeIngredients
     li.setAttribute("style", "display:block;")
     ingredientsEl.appendChild(li)
   }
   recipeOutputEl.appendChild(ingredientsEl)
 
+  //display and append yield and time
+  let yieldTimeEl = document.createElement("div")
+  yieldTimeEl.classList = "card-body text-center"
+  yieldTimeEl.innerHTML =
+    "<br><b>Yield: </b>" +
+    recipeYield +
+    "&emsp;" +
+    "<b>Time: </b>" +
+    recipeTime +
+    " minutes<br><br>"
+  recipeOutputEl.appendChild(yieldTimeEl)
 
-    //display and append yield and time
-var yieldTimeEl = document.createElement("div")
-yieldTimeEl.classList = "card-body text-center"
-yieldTimeEl.innerHTML = "<br><b>Yield: </b>"+recipeYield+"&emsp;"+"<b>Time: </b>"+recipeTime+" minutes<br><br>"
-recipeOutputEl.appendChild(yieldTimeEl)
+  //favorite icon
+  let pEl = document.createElement("p")
+  let buttonEl = document.createElement("button")
+  let spanEl = document.createElement("span")
+  let iEl = document.createElement("i")
+  pEl.classList = "buttons"
+  buttonEl.classList = "button is-danger is-outlined"
+  spanEl.classList = "icon is-small"
+  iEl.classList = "fa-regular fa-heart"
+  spanEl.appendChild(iEl)
+  buttonEl.appendChild(spanEl)
+  pEl.appendChild(buttonEl)
 
-//favorite icon
-var pResEl = document.createElement("p")
-var buttonResEl = document.createElement("button")
-var spanResEl = document.createElement("span")
-var iResEl = document.createElement("i")
-pResEl.classList = "buttons"
-buttonResEl.classList = "button recipeFav is-danger is-responsive is-outlined"
-spanResEl.classList = "icon is-small"
-iResEl.classList = "fa-regular fa-heart"
-spanResEl.appendChild(iResEl)
-buttonResEl.appendChild(spanResEl)
-pResEl.appendChild(buttonResEl)
-
-recipeOutputEl.appendChild(pResEl)
-
-// favoriteResContainer.addEventListener("click", (event)=>{
-//   event.preventDefault()
-//   var 
-// })
-
-
+  recipeOutputEl.appendChild(pEl)
+  buttonEl.addEventListener("click", () => {
+    localStorage.setItem("recipeObjs", recipeObjs_stringified)
+  })
 }
 
 function cuisineSearchSubmit(event) {
   event.preventDefault()
-  var formatInputVal = document.querySelector("#cuisineType").value
+  let formatInputVal = document.querySelector("#cuisineType").value
   getRecipeApi(formatInputVal)
 }
 
@@ -163,7 +179,7 @@ function fetchMovieApi(genre) {
         let imgEl = document.createElement("img")
         movieOutputEl.appendChild(imgEl)
         imgEl.src = IMAGEURL + selectedMovie.poster_path
-        var tempDiv = document.createElement("div")
+        let tempDiv = document.createElement("div")
         movieOutputEl.appendChild(tempDiv)
 
         // Create an overview div
@@ -178,21 +194,19 @@ function fetchMovieApi(genre) {
           "<b>Rating:</b> " + selectedMovie.vote_average + "/10<br><br>"
 
         //favorite icon
+        let pEl = document.createElement("p")
+        let buttonEl = document.createElement("button")
+        let spanEl = document.createElement("span")
+        let iEl = document.createElement("i")
+        pEl.classList = "buttons"
+        buttonEl.classList = "button is-danger is-outlined"
+        spanEl.classList = "icon is-small"
+        iEl.classList = "fa-regular fa-heart"
+        spanEl.appendChild(iEl)
+        buttonEl.appendChild(spanEl)
+        pEl.appendChild(buttonEl)
 
-          var pEl = document.createElement("p")
-          var buttonEl = document.createElement("button")
-          var spanEl = document.createElement("span")
-          var iEl = document.createElement("i")
-          pEl.classList = "buttons"
-          buttonEl.classList = "button movieFav is-danger is-responsive is-outlined"
-          spanEl.classList = "icon is-small"
-          iEl.classList = "fa-regular fa-heart"
-          spanEl.appendChild(iEl)
-          buttonEl.appendChild(spanEl)
-          pEl.appendChild(buttonEl)
-          
-          movieOutputEl.appendChild(pEl)
-
+        movieOutputEl.appendChild(pEl)
 
         // Fetch api for link to watch movie
         fetch(
@@ -210,9 +224,18 @@ function fetchMovieApi(genre) {
                 movieEl.classList = ""
                 movieEl.setAttribute("target", "blank")
                 tempDiv.appendChild(movieEl)
+
+                // Local storage
+                movieObj = {}
                 movieObj.title = selectedMovie.title
                 movieObj.link = link
+
+                // Limit to 5 movies
+                if (movieObjs.length === 5) {
+                  movieObjs.shift()
+                }
                 movieObjs.push(movieObj)
+
                 let movieObjs_stringified = JSON.stringify(movieObjs)
                 buttonEl.addEventListener("click", () => {
                   localStorage.setItem("movieObjs", movieObjs_stringified)
@@ -224,20 +247,6 @@ function fetchMovieApi(genre) {
       })
     }
   })
-}
-
-//stores favorite recipe 
-var recipeStor = (favorite)=> {
-  if (!recipeFavorites.includes(favorite)){
-    recipeFavorites.push(favorite)
-    localStorage.setItem("Favorites", JSON.stringify(recipeFavorites))
-    var btn=document.createElement("button")
-    btn.setAttribute("class", "button")
-    btn.setAttribute("value", favorite)
-    btn.textContent=favorite
-    favoriteContainer.append(btn)
-  }
-  allFavorites=JSON.parse(localStorage.getItem("history"))|| []
 }
 
 function callAPIs(e) {
@@ -252,28 +261,53 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
+// Modal toggle
+$(document).ready(function () {
+  $("#launchModal").click(function () {
+    $(".modal").addClass("is-active")
+  })
+  $("#closebtn").click(function () {
+    $(".modal").removeClass("is-active")
+  })
+})
 
-// Function to fetch link to watch movie
-function fetchMovieLink(movieId) {}
+// Show the favorite movie links on the modal
+let showFavBtn = document.querySelector("#launchModal")
+showFavBtn.addEventListener("click", () => {
+  let favMovieDiv = document.querySelector("#fav-movie")
+  favMovieDiv.innerHTML = ""
+  storedMovieInput = localStorage.getItem("movieObjs")
+  movieObjs = JSON.parse(storedMovieInput)
+  for (let movie of movieObjs) {
+    let movieLi = document.createElement("li")
+    let favMovieEl = document.createElement("a")
+    let favMovieLinkText = document.createTextNode(movie.title)
+    favMovieEl.appendChild(favMovieLinkText)
+    favMovieEl.title = movie.title
+    favMovieEl.href = movie.link
+    favMovieEl.classList = ""
+    favMovieEl.setAttribute("target", "blank")
+    movieLi.appendChild(favMovieEl)
+    favMovieDiv.appendChild(movieLi)
+  }
+})
 
-
-$(document).ready(function(){
-  // $(".modal").addClass("is-active");
-
-$("#lanuchModal").click(function() {
-$(".modal").addClass("is-active");  
-});
-
-// $(".modal-close").click(function() {
-//  $(".modal").removeClass("is-active");
-// });
-
-$("#closebtn").click(function() {
- $(".modal").removeClass("is-active");
-});
-// $("#closetop").click(function() {
-//  $(".modal").removeClass("is-active");
-// });
-});
-
-
+// Show the favorite recipe links on the modal
+showFavBtn.addEventListener("click", () => {
+  let favRecipeDiv = document.querySelector("#fav-recipe")
+  favRecipeDiv.innerHTML = ""
+  storedRecipeInput = localStorage.getItem("recipeObjs")
+  recipeObjs = JSON.parse(storedRecipeInput)
+  for (let recipe of recipeObjs) {
+    let recipeLi = document.createElement("li")
+    let favRecipeEl = document.createElement("a")
+    let favRecipeLinkText = document.createTextNode(recipe.title)
+    favRecipeEl.appendChild(favRecipeLinkText)
+    favRecipeEl.title = recipe.title
+    favRecipeEl.href = recipe.link
+    favRecipeEl.classList = ""
+    favRecipeEl.setAttribute("target", "blank")
+    recipeLi.appendChild(favRecipeEl)
+    favRecipeDiv.appendChild(recipeLi)
+  }
+})
