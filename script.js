@@ -12,6 +12,9 @@ let recipeObjs = []
 var cuisineSearchEl = document.querySelector("#cuisineSearch")
 var recipeOutputEl = document.querySelector("#recipeOutput")
 let generateBtnEl = document.querySelector("#generateBtn")
+var favoriteResContainer = document.querySelector(".recipeFav")
+let recipeFavorites = [];
+let movieFavorites = [];
 
 // Fetch recipe api function
 const getRecipeApi = (cuisine) => {
@@ -85,35 +88,34 @@ function recipeDisplay(recipes, recipeInput) {
   }
   recipeOutputEl.appendChild(ingredientsEl)
 
-  //display and append yield and time
-  var yieldTimeEl = document.createElement("div")
-  yieldTimeEl.classList = "card-body text-center"
-  yieldTimeEl.innerHTML =
-    "<br><b>Yield: </b>" +
-    recipeYield +
-    "&emsp;" +
-    "<b>Time: </b>" +
-    recipeTime +
-    " minutes<br><br>"
-  recipeOutputEl.appendChild(yieldTimeEl)
 
-  //favorite icon
-  var pEl = document.createElement("p")
-  var buttonEl = document.createElement("button")
-  var spanEl = document.createElement("span")
-  var iEl = document.createElement("i")
-  pEl.classList = "buttons"
-  buttonEl.classList = "button is-danger is-outlined"
-  spanEl.classList = "icon is-small"
-  iEl.classList = "fa-regular fa-heart"
-  spanEl.appendChild(iEl)
-  buttonEl.appendChild(spanEl)
-  pEl.appendChild(buttonEl)
+    //display and append yield and time
+var yieldTimeEl = document.createElement("div")
+yieldTimeEl.classList = "card-body text-center"
+yieldTimeEl.innerHTML = "<br><b>Yield: </b>"+recipeYield+"&emsp;"+"<b>Time: </b>"+recipeTime+" minutes<br><br>"
+recipeOutputEl.appendChild(yieldTimeEl)
 
-  recipeOutputEl.appendChild(pEl)
-  buttonEl.addEventListener("click", () => {
-    localStorage.setItem("recipeObj", recipeObj_stringified)
-  })
+//favorite icon
+var pResEl = document.createElement("p")
+var buttonResEl = document.createElement("button")
+var spanResEl = document.createElement("span")
+var iResEl = document.createElement("i")
+pResEl.classList = "buttons"
+buttonResEl.classList = "button recipeFav is-danger is-responsive is-outlined"
+spanResEl.classList = "icon is-small"
+iResEl.classList = "fa-regular fa-heart"
+spanResEl.appendChild(iResEl)
+buttonResEl.appendChild(spanResEl)
+pResEl.appendChild(buttonResEl)
+
+recipeOutputEl.appendChild(pResEl)
+
+// favoriteResContainer.addEventListener("click", (event)=>{
+//   event.preventDefault()
+//   var 
+// })
+
+
 }
 
 function cuisineSearchSubmit(event) {
@@ -176,19 +178,21 @@ function fetchMovieApi(genre) {
           "<b>Rating:</b> " + selectedMovie.vote_average + "/10<br><br>"
 
         //favorite icon
-        var pEl = document.createElement("p")
-        var buttonEl = document.createElement("button")
-        var spanEl = document.createElement("span")
-        var iEl = document.createElement("i")
-        pEl.classList = "buttons"
-        buttonEl.classList = "button is-danger is-outlined"
-        spanEl.classList = "icon is-small"
-        iEl.classList = "fa-regular fa-heart"
-        spanEl.appendChild(iEl)
-        buttonEl.appendChild(spanEl)
-        pEl.appendChild(buttonEl)
 
-        movieOutputEl.appendChild(pEl)
+          var pEl = document.createElement("p")
+          var buttonEl = document.createElement("button")
+          var spanEl = document.createElement("span")
+          var iEl = document.createElement("i")
+          pEl.classList = "buttons"
+          buttonEl.classList = "button movieFav is-danger is-responsive is-outlined"
+          spanEl.classList = "icon is-small"
+          iEl.classList = "fa-regular fa-heart"
+          spanEl.appendChild(iEl)
+          buttonEl.appendChild(spanEl)
+          pEl.appendChild(buttonEl)
+          
+          movieOutputEl.appendChild(pEl)
+
 
         // Fetch api for link to watch movie
         fetch(
@@ -222,6 +226,20 @@ function fetchMovieApi(genre) {
   })
 }
 
+//stores favorite recipe 
+var recipeStor = (favorite)=> {
+  if (!recipeFavorites.includes(favorite)){
+    recipeFavorites.push(favorite)
+    localStorage.setItem("Favorites", JSON.stringify(recipeFavorites))
+    var btn=document.createElement("button")
+    btn.setAttribute("class", "button")
+    btn.setAttribute("value", favorite)
+    btn.textContent=favorite
+    favoriteContainer.append(btn)
+  }
+  allFavorites=JSON.parse(localStorage.getItem("history"))|| []
+}
+
 function callAPIs(e) {
   handleRandomMovieBtn(e)
   cuisineSearchSubmit(e)
@@ -233,3 +251,29 @@ function getRandomInt(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min) + min)
 }
+
+
+// Function to fetch link to watch movie
+function fetchMovieLink(movieId) {}
+
+
+$(document).ready(function(){
+  // $(".modal").addClass("is-active");
+
+$("#lanuchModal").click(function() {
+$(".modal").addClass("is-active");  
+});
+
+// $(".modal-close").click(function() {
+//  $(".modal").removeClass("is-active");
+// });
+
+$("#closebtn").click(function() {
+ $(".modal").removeClass("is-active");
+});
+// $("#closetop").click(function() {
+//  $(".modal").removeClass("is-active");
+// });
+});
+
+
