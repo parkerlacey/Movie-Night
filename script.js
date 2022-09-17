@@ -70,11 +70,33 @@ function recipeDisplay(recipes, recipeInput) {
     var recipeIngredients =
       recipes["hits"][randomIndex]["recipe"]["ingredientLines"][i]
     var li = document.createElement("li")
-    li.innerHTML = recipeIngredients
+    li.innerHTML = "• "+recipeIngredients
     li.setAttribute("style", "display:block;")
     ingredientsEl.appendChild(li)
   }
   recipeOutputEl.appendChild(ingredientsEl)
+
+    //display and append yield and time
+var yieldTimeEl = document.createElement("div")
+yieldTimeEl.classList = "card-body text-center"
+yieldTimeEl.innerHTML = "<br><b>Yield: </b>"+recipeYield+"&emsp;"+"<b>Time: </b>"+recipeTime+" minutes<br><br>"
+recipeOutputEl.appendChild(yieldTimeEl)
+
+//favorite icon
+var pEl = document.createElement("p")
+var buttonEl = document.createElement("button")
+var spanEl = document.createElement("span")
+var iEl = document.createElement("i")
+pEl.classList = "buttons"
+buttonEl.classList = "button is-danger is-outlined"
+spanEl.classList = "icon is-small"
+iEl.classList = "fa-regular fa-heart"
+spanEl.appendChild(iEl)
+buttonEl.appendChild(spanEl)
+pEl.appendChild(buttonEl)
+
+recipeOutputEl.appendChild(pEl)
+
 }
 
 function cuisineSearchSubmit(event) {
@@ -132,7 +154,22 @@ function fetchMovieApi(genre) {
         let ratingEl = document.createElement("h3")
         movieOutputEl.appendChild(ratingEl)
         ratingEl.innerHTML =
-          "<b>Rating:</b> " + selectedMovie.vote_average + "/10"
+          "<b>Rating:</b> " + selectedMovie.vote_average + "/10<br><br>"
+
+        //favorite icon
+          var pEl = document.createElement("p")
+          var buttonEl = document.createElement("button")
+          var spanEl = document.createElement("span")
+          var iEl = document.createElement("i")
+          pEl.classList = "buttons"
+          buttonEl.classList = "button is-danger is-outlined"
+          spanEl.classList = "icon is-small"
+          iEl.classList = "fa-regular fa-heart"
+          spanEl.appendChild(iEl)
+          buttonEl.appendChild(spanEl)
+          pEl.appendChild(buttonEl)
+          
+          movieOutputEl.appendChild(pEl)
 
         // Fetch api for link to watch movie
         fetch(
