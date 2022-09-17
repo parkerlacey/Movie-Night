@@ -66,6 +66,9 @@ html {
   margin-bottom: 3px;
   background-color: none;
   color: white;
+  border-bottom: 2px;
+  border-bottom-color: white;
+  border-bottom-style: solid;
 }
 
 h4 {
@@ -73,6 +76,7 @@ h4 {
   margin-bottom: -11px;
   font-size: 1.12rem;
   color: white;
+  font-weight: 450;
 }
 
 option {
@@ -106,6 +110,7 @@ img {
 ul {
   font-size: 1.1rem;
   color: white;
+  font-weight: 450;
 }
 
 .label {
