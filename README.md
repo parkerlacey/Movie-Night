@@ -28,24 +28,31 @@ Deployed website: https://parkerlacey.github.io/Movie-Night/
 
 ## Credits
 
-* Theodore Wang
-* Daisy Le
-* Parker Lacey
-* David Edelson
-* Devante Roland
-* Blaine Way
+* Theodore Wang - https://github.com/twangerwang
+* Daisy Le - https://github.com/daisyle0203
+* Parker Lacey - https://github.com/parkerlacey
+* David Edelson - https://github.com/DBEdelson
+* Devante Roland - https://github.com/888santiago
+* Blaine Way - https://github.com/Bway83
 
 ## API's Used
 
 https://developer.edamam.com/edamam-docs-recipe-api <br>
 https://www.themoviedb.org/documentation/api
 
-
 ## How to Contribute
 
-- Adding Rotten tomatoes and IMDB ratings <br>
-- Providing more parameters for the movie and cuisine generator <br>
-- Correlating the genre and cuisine type 
+- Correlating the genre and cuisine type <br>
+-Add APIs for more recipes and movie choices <br>
+-Expand on search criteria to refine results <br>
+-Add pop-up window for result to leave less clutter on page <br>
+-Adding Rotten tomatoes and IMDB ratings <br>
+
+##Acceptance Criteria
+GIVEN a website page with selections 
+WHEN  a user submits genre, and cuisine type
+THEN  a random movie and food is generated matching their selections
+
 
 ## Technologies Used
 
@@ -55,5 +62,5 @@ https://www.themoviedb.org/documentation/api
 * Javascript
 * JQuery
 
-
+##License
  
