@@ -20,7 +20,7 @@ SO THAT I can spice up my typical day-to-day life
 
 To check out the work we completed, check out these websites: <br>
 Github: https://github.com/parkerlacey/Project-1 <br>
-Deployed website: https://parkerlacey.github.io/Project-1/
+Deployed website: https://parkerlacey.github.io/Movie-Night/
 
 ## Usage
 
