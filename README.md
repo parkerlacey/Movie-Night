@@ -55,7 +55,6 @@ THEN  a random movie and food is generated matching their selections
 
 
 ## Technologies Used
-
 * HTML
 * CSS
 * Bulma
