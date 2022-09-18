@@ -43,15 +43,15 @@ https://www.themoviedb.org/documentation/api
 ## How to Contribute
 
 - Correlating the genre and cuisine type <br>
--Add APIs for more recipes and movie choices <br>
--Expand on search criteria to refine results <br>
--Add pop-up window for result to leave less clutter on page <br>
--Adding Rotten tomatoes and IMDB ratings <br>
+- Add APIs for more recipes and movie choices <br>
+- Expand on search criteria to refine results <br>
+- Add pop-up window for result to leave less clutter on page <br>
+- Adding Rotten tomatoes and IMDB ratings <br>
 
-##Acceptance Criteria
-GIVEN a website page with selections 
-WHEN  a user submits genre, and cuisine type
-THEN  a random movie and food is generated matching their selections
+## Acceptance Criteria
+* GIVEN a website page with selections 
+* WHEN  a user submits genre, and cuisine type
+* THEN  a random movie and food is generated matching their selections
 
 
 ## Technologies Used
@@ -62,5 +62,5 @@ THEN  a random movie and food is generated matching their selections
 * Javascript
 * JQuery
 
-##License
+## License
  
