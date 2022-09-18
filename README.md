@@ -8,7 +8,7 @@ Movie Night is an application that randomly generates a movie to watch and a rec
 
 AS A hungry movie connoisseur <br>
 I WANT to find a random movie to watch and recipe to make <br>
-SO THAT I can spice up my underwhelming day-to-day life
+SO THAT I can spice up my typical day-to-day life
 
 ## Table of Contents (Optional)
 
