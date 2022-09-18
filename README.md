@@ -6,66 +6,55 @@ Provide a short description explaining the what, why, and how of your project. U
 Movie Night is an application that randomly generates a movie to watch and a recipe for a meal based off the parameters that are given for each. This relieves the user of the burden of choice and can spice up their day-to-day life. 
 
 ## User Story
+
 AS A hungry movie connoisseur <br>
 I WANT to find a random movie to watch and recipe to make <br>
 SO THAT I can spice up my underwhelming day-to-day life
 
 ## Table of Contents (Optional)
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](#license)
 
 ## Installation
+
 To check out the work we completed, check out these websites: <br>
 Github: https://github.com/parkerlacey/Project-1 <br>
 Deployed website: https://parkerlacey.github.io/Project-1/
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![movienight](assets/Movie-Night.gif) 
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+* Theodore Wang
+* Daisy Le
+* Parker Lacey
+* David Edelson
+* Devante Roland
+* Blaine Way
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+## API's Used
 
-If you followed tutorials, include links to those here as well.
+https://developer.edamam.com/edamam-docs-recipe-api <br>
+https://www.themoviedb.org/documentation/api
 
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
 
 ## How to Contribute
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+- Adding Rotten tomatoes and IMDB ratings <br>
+- Providing more parameters for the movie and cuisine generator <br>
+- Correlating the genre and cuisine type 
 
-## Tests
+## Technologies Used
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+* HTML
+* CSS
+* Bulma
+* Javascript
+* JQuery
+
 
  
