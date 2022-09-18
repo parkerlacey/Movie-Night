@@ -48,9 +48,9 @@ https://www.themoviedb.org/documentation/api
 -Add pop-up window for result to leave less clutter on page <br>
 -Adding Rotten tomatoes and IMDB ratings <br>
 
-##Acceptance Criteria
-GIVEN a website page with selections 
-WHEN  a user submits genre, and cuisine type
+## Acceptance Criteria
+GIVEN a website page with selections <br>
+WHEN  a user submits genre, and cuisine type <br>
 THEN  a random movie and food is generated matching their selections
 
 
