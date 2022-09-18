@@ -24,7 +24,7 @@ Deployed website: https://parkerlacey.github.io/Movie-Night/
 
 ## Usage
 
-![movienight](assets/Movie-Night.gif) 
+![movienight](assets/movienight3.gif) 
 
 ## Credits
 
