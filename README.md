@@ -19,7 +19,7 @@ SO THAT I can spice up my typical day-to-day life
 ## Installation
 
 To check out the work we completed, check out these websites: <br>
-Github: https://github.com/parkerlacey/Project-1 <br>
+Github: https://github.com/parkerlacey/Movie-Night <br>
 Deployed website: https://parkerlacey.github.io/Movie-Night/
 
 ## Usage
