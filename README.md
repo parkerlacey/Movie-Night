@@ -2,7 +2,6 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 Movie Night is an application that randomly generates a movie to watch and a recipe for a meal based off the parameters that are given for each. This relieves the user of the burden of choice and can spice up their day-to-day life. 
 
 ## User Story
