@@ -43,10 +43,10 @@ https://www.themoviedb.org/documentation/api
 ## How to Contribute
 
 - Correlating the genre and cuisine type <br>
--Add APIs for more recipes and movie choices <br>
--Expand on search criteria to refine results <br>
--Add pop-up window for result to leave less clutter on page <br>
--Adding Rotten tomatoes and IMDB ratings <br>
+- Add APIs for more recipes and movie choices <br>
+- Expand on search criteria to refine results <br>
+- Add pop-up window for result to leave less clutter on page <br>
+- Adding Rotten tomatoes and IMDB ratings <br>
 
 ## Acceptance Criteria
 GIVEN a website page with selections <br>
