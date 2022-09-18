@@ -10,7 +10,7 @@ AS A hungry movie connoisseur <br>
 I WANT to find a random movie to watch and recipe to make <br>
 SO THAT I can spice up my typical day-to-day life
 
-## Table of Contents (Optional)
+## Table of Contents 
 
 - [Installation](#installation)
 - [Usage](#usage)
