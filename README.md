@@ -2,7 +2,7 @@
 
 ## Description
 
-Movie Night is an application that randomly generates a movie to watch and a recipe for a meal based off the parameters that are given for each. This relieves the user of the burden of choice and can spice up their day-to-day life. 
+Movie Night is an application that randomly generates a movie to watch and a recipe for a meal based off the parameters that are given for each. You can also save your favorite recipe and movie to reference later on. This relieves the user of the burden of choice and the amount of time it takes to choose a movie and meal while also spicing up their day-to-day life. 
 
 ## User Story
 
