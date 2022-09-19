@@ -148,6 +148,13 @@ function recipeDisplay(recipes, recipeInput) {
 function cuisineSearchSubmit(event) {
   event.preventDefault()
   let formatInputVal = document.querySelector("#cuisineType").value
+  if (!formatInputVal) {
+    let recipeDiv = document.querySelector("#recipeOutput")
+    if (recipeDiv) {
+      recipeDiv.remove()
+      return
+    }
+  }
   getRecipeApi(formatInputVal)
 }
 
@@ -161,6 +168,13 @@ let genreInput
 function handleRandomMovieBtn(event) {
   event.preventDefault()
   genreInput = document.querySelector("#genre-input").value
+  if (!genreInput) {
+    let movieDiv = document.querySelector("#movieOutput")
+    if (movieDiv) {
+      movieDiv.remove()
+      return
+    }
+  }
   fetchMovieApi(genreInput)
 }
 
