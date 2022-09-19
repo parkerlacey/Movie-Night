@@ -64,22 +64,11 @@ function recipeDisplay(recipes, recipeInput) {
   recipeEl.href = recipeUrl
   recipeEl.classList = ""
   recipeEl.setAttribute("target", "blank")
+  recipeEl.setAttribute("id", "recipeLink")
   let tempDiv = document.createElement("div")
   tempDiv.appendChild(recipeEl)
   recipeOutputEl.appendChild(tempDiv)
 
-  // Local storage
-  recipeObj = {}
-  recipeObj.title = recipeTitle
-  recipeObj.link = recipeUrl
-
-  // Limit to 5 recipes
-  if (recipeObjs.length === 5) {
-    recipeObjs.shift()
-  }
-  recipeObjs.push(recipeObj)
-
-  let recipeObjs_stringified = JSON.stringify(recipeObjs)
 
   //"Ingredients" title created and append
   let ingredientsTitleEl = document.createElement("h2")
@@ -126,11 +115,33 @@ function recipeDisplay(recipes, recipeInput) {
   iEl.classList = "fa-regular fa-heart"
   spanEl.appendChild(iEl)
   buttonEl.appendChild(spanEl)
-  pEl.appendChild(buttonEl)
+  pEl.append(buttonEl)
 
   recipeOutputEl.appendChild(pEl)
   buttonEl.addEventListener("click", () => {
-    localStorage.setItem("recipeObjs", recipeObjs_stringified)
+  // Local storage
+  recipeObj = {}
+  recipeObj.title = recipeTitle
+  recipeObj.link = recipeUrl
+  // Limit to 5 recipes
+  
+  if (greaterFive(recipeObjs)){
+    recipeObjs.shift()
+  }
+
+  recipeObjs.push(recipeObj)
+
+  function greaterFive(recipeObjs) {
+    let limitLength=4;
+    let exceedsLimit=false;
+    if (recipeObjs.length>limitLength) {
+      exceedsLimit=true;
+    }
+    return exceedsLimit;
+  }
+  let recipeObjs_stringified = JSON.stringify(recipeObjs)
+  localStorage.setItem("recipeObjs", recipeObjs_stringified)
+  
   })
 }
 
@@ -238,20 +249,27 @@ function fetchMovieApi(genre) {
                 movieEl.classList = ""
                 movieEl.setAttribute("target", "blank")
                 tempDiv.appendChild(movieEl)
-
-                // Local storage
+                
+                buttonEl.addEventListener("click", () => {
+                   // Local storage
                 movieObj = {}
                 movieObj.title = selectedMovie.title
                 movieObj.link = link
-
                 // Limit to 5 movies
-                if (movieObjs.length === 5) {
+                if (greaterFivemov(movieObjs)) {
                   movieObjs.shift()
-                }
+                  }
                 movieObjs.push(movieObj)
 
-                let movieObjs_stringified = JSON.stringify(movieObjs)
-                buttonEl.addEventListener("click", () => {
+                function greaterFivemov(movieObjs) {
+                  let limitLength=4;
+                  let exceedsLimit=false;
+                  if (movieObjs.length>limitLength) {
+                    exceedsLimit=true;
+                  }
+                  return exceedsLimit;
+                }
+                  let movieObjs_stringified = JSON.stringify(movieObjs)
                   localStorage.setItem("movieObjs", movieObjs_stringified)
                 })
               }
@@ -290,38 +308,42 @@ let showFavBtn = document.querySelector("#launchModal")
 showFavBtn.addEventListener("click", () => {
   let favMovieDiv = document.querySelector("#fav-movie")
   favMovieDiv.innerHTML = ""
-  storedMovieInput = localStorage.getItem("movieObjs")
-  movieObjs = JSON.parse(storedMovieInput)
-  for (let movie of movieObjs) {
-    let movieLi = document.createElement("li")
-    let favMovieEl = document.createElement("a")
-    let favMovieLinkText = document.createTextNode(movie.title)
-    favMovieEl.appendChild(favMovieLinkText)
-    favMovieEl.title = movie.title
-    favMovieEl.href = movie.link
-    favMovieEl.classList = ""
-    favMovieEl.setAttribute("target", "blank")
-    movieLi.appendChild(favMovieEl)
-    favMovieDiv.appendChild(movieLi)
-  }
+  storedMovieInput = localStorage.getItem("movieObjs")||[]
+  if (movieObjs = JSON.parse(storedMovieInput)) {
+    var movLength=movieObjs.length
+    for (i=0; i<movLength; i++){
+      let movieLi = document.createElement("li")
+      let favMovieEl = document.createElement("a")
+      let favMovieLinkText = document.createTextNode(movieObjs[i]["title"])
+      favMovieEl.appendChild(favMovieLinkText)
+      favMovieEl.title = movieObjs[i]["title"]
+      favMovieEl.href = movieObjs[i]["link"]
+      favMovieEl.classList = ""
+      favMovieEl.setAttribute("target", "blank")
+      movieLi.appendChild(favMovieEl)
+      favMovieDiv.appendChild(movieLi)
+    }
+  } 
 })
 
 // Show the favorite recipe links on the modal
 showFavBtn.addEventListener("click", () => {
   let favRecipeDiv = document.querySelector("#fav-recipe")
   favRecipeDiv.innerHTML = ""
-  storedRecipeInput = localStorage.getItem("recipeObjs")
-  recipeObjs = JSON.parse(storedRecipeInput)
-  for (let recipe of recipeObjs) {
-    let recipeLi = document.createElement("li")
-    let favRecipeEl = document.createElement("a")
-    let favRecipeLinkText = document.createTextNode(recipe.title)
-    favRecipeEl.appendChild(favRecipeLinkText)
-    favRecipeEl.title = recipe.title
-    favRecipeEl.href = recipe.link
-    favRecipeEl.classList = ""
-    favRecipeEl.setAttribute("target", "blank")
-    recipeLi.appendChild(favRecipeEl)
-    favRecipeDiv.appendChild(recipeLi)
+  storedRecipeInput = localStorage.getItem("recipeObjs")||[]
+  if (recipeObjs = JSON.parse(storedRecipeInput)) {
+    var resLength=recipeObjs.length
+    for (i=0; i<resLength; i++){
+      let recipeLi = document.createElement("li")
+      let favRecipeEl = document.createElement("a")
+      let favRecipeLinkText = document.createTextNode(recipeObjs[i]["title"])    
+      favRecipeEl.appendChild(favRecipeLinkText)
+      favRecipeEl.title = recipeObjs[i]["title"]
+      favRecipeEl.href = recipeObjs[i]["link"]
+      favRecipeEl.classList = ""
+      favRecipeEl.setAttribute("target", "blank")
+      recipeLi.appendChild(favRecipeEl)
+      favRecipeDiv.appendChild(recipeLi)
+    }
   }
 })
