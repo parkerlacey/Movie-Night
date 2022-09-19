@@ -79,13 +79,14 @@ option {
 
 img {
   height: 50%;
-  max-width: 100%;
+  max-width: 90%;
 }
 .card {
   margin-left: 1em;
   margin-right: 1em;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
+  max-height:fit-content;
 }
 
 a {
