@@ -124,13 +124,10 @@ function recipeDisplay(recipes, recipeInput) {
   recipeObj.title = recipeTitle
   recipeObj.link = recipeUrl
   // Limit to 5 recipes
-  
   if (greaterFive(recipeObjs)){
     recipeObjs.shift()
   }
-
   recipeObjs.push(recipeObj)
-
   function greaterFive(recipeObjs) {
     let limitLength=4;
     let exceedsLimit=false;
@@ -141,7 +138,6 @@ function recipeDisplay(recipes, recipeInput) {
   }
   let recipeObjs_stringified = JSON.stringify(recipeObjs)
   localStorage.setItem("recipeObjs", recipeObjs_stringified)
-  
   })
 }
 
