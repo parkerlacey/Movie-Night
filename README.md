@@ -62,5 +62,6 @@ THEN  a random movie and food is generated matching their selections
 * Javascript
 * JQuery
 
-##License
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  
