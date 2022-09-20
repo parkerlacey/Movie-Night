@@ -20,17 +20,10 @@ body {
   font-size:xx-large;
 }
 
-.modal-card-body{
-  /* font-family: 'Monoton', cursive; */
-  /* background-color: #3e8ed0; */
-}
 h1, .title {
   font-family: 'Monoton', cursive;
   font-weight: 800;
   font-size:xx-large;
-}
-.subtitle {
-
 }
 
 html {
@@ -40,7 +33,6 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
-
 
 .genre {
   margin: 50px;
